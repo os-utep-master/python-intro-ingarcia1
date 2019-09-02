@@ -32,9 +32,10 @@ def countwords(wordlist):
     wordList.sort()
     for x in wordlist:
         if x not in newwords:
-            newwords.append(x)
-            count = wordlist.count(x)
-            output.write(x + " " + str(count) + "\n")
+            if x != "":
+                newwords.append(x)
+                count = wordlist.count(x)
+                output.write(x + " " + str(count) + "\n")
     output.close()
 
 wordList = createlist()
