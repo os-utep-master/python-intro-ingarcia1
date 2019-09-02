@@ -1,9 +1,16 @@
 #! /usr/bin/env python3
 
 import re
+import sys
+
+if len(sys.argv) is not 3:
+    print("Correct usage: wordCountTest.py <input text file> <output file>")
+    exit()
+
+ifile = sys.argv[1]
+o = sys.argv[2]
 
 def createlist():
-    ifile = input()
     f = open(ifile, "r")
     words = list()
 
@@ -19,10 +26,16 @@ def createlist():
     f.close()
     return words
 
-output = open("test.txt", "w")
-wordList = createlist()
+def countwords(wordlist):
+    output = open(o, "w")
+    newwords = list()
+    wordList.sort()
+    for x in wordlist:
+        if x not in newwords:
+            newwords.append(x)
+            count = wordlist.count(x)
+            output.write(x + " " + str(count) + "\n")
+    output.close()
 
-wordList.sort()
-for x in wordList:
-    output.write(x+"\n")
-output.close()
+wordList = createlist()
+wordList = countwords(wordList)

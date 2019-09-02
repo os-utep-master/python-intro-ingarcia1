@@ -1,15 +1,9 @@
-a
-a
-a
-a
-hello
-is
-is
-kaki
-kaki
-mariel
-my
-my
-name
-story
-this
+a 4
+hello 1
+is 2
+kaki 2
+mariel 1
+my 2
+name 1
+story 1
+this 1
