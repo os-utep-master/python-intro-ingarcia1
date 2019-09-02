@@ -1,20 +1,28 @@
 #! /usr/bin/env python3
 
-inputFile = input()
+import re
 
-outputFile = open("test.txt", "w")
+def createlist():
+    ifile = input()
+    f = open(ifile, "r")
+    words = list()
 
-f = open(inputFile, "r")
+    #Read file line by line
+    for line in f:
+        line = line.strip()
+        word = re.sub(r'[^\w\s]','', line)
+        word = re.sub(r'\_','',word)
+        word = re.split('[ \t]', word)
+        #Append every word to one global list
+        for cw in word:
+            words.append(cw.lower())
+    f.close()
+    return words
 
-wordList = list()
+output = open("test.txt", "w")
+wordList = createlist()
 
-i = 0
-
-for x in f:
-    outputFile.write(x)
-    wordList.append(x)
-    print(wordList[i])
-    i += 1
-
-f.close()
-outputFile.close()
+wordList.sort()
+for x in wordList:
+    output.write(x+"\n")
+output.close()
